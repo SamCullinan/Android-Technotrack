@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">Profile</string>
+    <string name="firstname">Name</string>
+    <string name="lastname">LastName</string>
+    <string name="date">Date</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="txtName1">Name</string>
+    <string name="txtName2">LastName</string>
+
+
+</resources>
