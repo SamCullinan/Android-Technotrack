@@ -129,12 +129,12 @@ public class ImgLoadServ extends Service {
         }
     }
 
-    private Bitmap LoadFromURL(String urlPath) {
+    private Bitmap LoadFromURL(String s) {
         Bitmap bitmap = null;
         HttpURLConnection connection = null;
         try {
 
-            URL url = new URL(urlPath);
+            URL url = new URL(s);
             connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
             bitmap = BitmapFactory.decodeStream(inputStream);
