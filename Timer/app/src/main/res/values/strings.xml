@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Timer</string>
+    <string name="inc">+</string>
+    <string name="set">Set</string>
+    <string name="dec">-</string>
+    <string name="text">Timer</string>
+</resources>
