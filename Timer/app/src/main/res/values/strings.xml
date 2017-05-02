@@ -3,5 +3,5 @@
     <string name="inc">+</string>
     <string name="set">Set</string>
     <string name="dec">-</string>
-    <string name="text">Timer</string>
+    <string name="text">JobTimer</string>
 </resources>
