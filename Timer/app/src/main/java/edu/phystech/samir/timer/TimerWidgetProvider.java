@@ -14,7 +14,6 @@ import android.content.Context;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 
-
 public class TimerWidgetProvider extends AppWidgetProvider {
 
     private final String SET = "set";
@@ -106,4 +105,5 @@ public class TimerWidgetProvider extends AppWidgetProvider {
         JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         scheduler.cancelAll();
     }
+
 }
