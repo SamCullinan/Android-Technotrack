@@ -15,7 +15,7 @@ import android.content.Context;
 
 public class ScheduledService extends IntentService {
 
-    private static final String ACTION = "action";
+    private static final String ACTION = "scheduled_action";
     private static final int NOTIFY_ID = 222;
 
     public ScheduledService() {
