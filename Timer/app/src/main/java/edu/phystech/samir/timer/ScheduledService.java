@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.content.Context;
 
 
-
 public class ScheduledService extends IntentService {
 
     private static final String ACTION = "action";
@@ -37,7 +36,6 @@ public class ScheduledService extends IntentService {
                 public void run() {
                     Notification.Builder builder = new Notification.Builder(getApplicationContext());
                     builder.setContentText("Таймер сработал")
-                            .setTicker("Последнее китайское предупреждение")
                             .setContentTitle("Напоминание")
                             .setSmallIcon(R.drawable.selftimer)
                             .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.selftimer))
