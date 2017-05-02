@@ -58,9 +58,9 @@ public class TimerWidgetProvider extends AppWidgetProvider {
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.timer__widget);
-            if(count == 99) {
-                return;
-            }
+         
+            if( count == 99 ) return;
+         
             count++;
             remoteViews.setTextViewText(R.id.TextView, String.valueOf(count));
 
@@ -72,9 +72,8 @@ public class TimerWidgetProvider extends AppWidgetProvider {
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.timer__widget);
-            if(count == 0) {
-                return;
-            }
+            if(count == 0) return;
+            
             count--;
             remoteViews.setTextViewText(R.id.TextView, String.valueOf(count));
 
