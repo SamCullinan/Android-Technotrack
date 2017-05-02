@@ -25,32 +25,6 @@ public class TimerWidgetProvider extends AppWidgetProvider {
     private static int count = 0;
 
     @Override
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-                         int[] appWidgetIds) {
-
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.timer__widget);
-        remoteViews.setTextViewText(R.id.TextView, String.valueOf(count));
-
-        Intent intent = new Intent(context, TimerWidgetProvider.class);
-
-        intent.setAction(SET);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.buttonSet, pendingIntent);
-
-        intent.setAction(INC);
-        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.buttonInc, pendingIntent);
-
-        intent.setAction(DEC);
-        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.buttonDec, pendingIntent);
-
-        ComponentName myWidget = new ComponentName(context, TimerWidgetProvider.class);
-        appWidgetManager.updateAppWidget(myWidget, remoteViews);
-
-    }
-
-    @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
 
@@ -93,5 +67,43 @@ public class TimerWidgetProvider extends AppWidgetProvider {
             JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
             scheduler.schedule(jobInfo);
         }
+    }
+
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager,
+                         int[] appWidgetIds) {
+
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.timer__widget);
+        remoteViews.setTextViewText(R.id.TextView, String.valueOf(count));
+
+        Intent intent = new Intent(context, TimerWidgetProvider.class);
+
+        intent.setAction(SET);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.buttonSet, pendingIntent);
+
+        intent.setAction(INC);
+        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.buttonInc, pendingIntent);
+
+        intent.setAction(DEC);
+        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.buttonDec, pendingIntent);
+
+        ComponentName myWidget = new ComponentName(context, TimerWidgetProvider.class);
+        appWidgetManager.updateAppWidget(myWidget, remoteViews);
+
+    }
+
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        super.onDeleted(context, appWidgetIds);
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+        JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        scheduler.cancelAll();
     }
 }
