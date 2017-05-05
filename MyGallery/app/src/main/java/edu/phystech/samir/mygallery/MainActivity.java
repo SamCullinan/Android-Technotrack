@@ -82,6 +82,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
         stopService(intent);
     }
 
@@ -204,19 +205,14 @@ public class MainActivity extends Activity {
                 Bundle.putBoolean("ExternalStorage", shouldRequestPermission);
                 intent.putExtras(Bundle);
                 startService(intent);
-/*
-* На лекции было сказано,что onScroll-это плохое решение,но после долгих поисков
-* для listview  я нашел только этот вариант с OnScrollListenerom на сайте
-* http://startandroid.ru/ru/uroki/vse-uroki-spiskom/85-urok-44-sobytija-v-listview.html (можно ли пользоваться этим сайтом?)
-* Я пытался сделать что-то похожее на  методы со слайдов лекции,но они не заработали у меня
-* Буду благодарен,если расскажете как хорошо реализовать загрузку по мере прокрутки списка на ListView
-* */
+
                listViewImg.setOnScrollListener(new AbsListView.OnScrollListener() {
 
                     @Override
                     public void onScrollStateChanged(AbsListView view, int scrollState) {
 
                     }
+
                     @Override
                     public void onScroll(AbsListView view, int firstVisibleItem,
                                          int visibleItemCount, int totalItemCount) {

@@ -44,6 +44,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         if(img.get(position) == null)
             holder.imgView.setImageResource(R.drawable.download);
+
         else
             holder.imgView.setImageBitmap(img.get(position));
 

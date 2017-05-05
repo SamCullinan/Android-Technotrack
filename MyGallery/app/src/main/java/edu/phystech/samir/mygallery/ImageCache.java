@@ -23,10 +23,11 @@ public class ImageCache {
         };
     }
 
-    public static ImageCache getInstance() {
+    public  ImageCache getInstance() {
         if (imageCache == null) {
             imageCache = new  ImageCache();
         }
+
         return imageCache;
     }
 
@@ -36,4 +37,5 @@ public class ImageCache {
     public synchronized void addBitmapToMemoryCache(String str, Bitmap bm) {
          mMemoryCache.put(str, bm);
     }
+
 }

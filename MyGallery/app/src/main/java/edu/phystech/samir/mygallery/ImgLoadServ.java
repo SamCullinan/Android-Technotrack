@@ -44,7 +44,8 @@ public class ImgLoadServ extends Service {
 
     @Override
     public void onCreate() {
-        LruCache = ImageCache.getInstance();
+        ImageCache imageCache = new ImageCache();
+        LruCache = imageCache.getInstance();
         Handler = new Handler();
         HandlerThread thread = new HandlerThread("ImgThread");
         thread.start();
@@ -91,7 +92,6 @@ public class ImgLoadServ extends Service {
 
             String[] strings = path.split("/");
             String filename = strings[strings.length - 1];
-
             bitmap = LoadFromImgCache(filename);
 
             if(bitmap == null) {
