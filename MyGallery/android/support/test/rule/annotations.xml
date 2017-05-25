@@ -1,0 +1,6 @@
+<root>
+    <item
+        name='android.support.test.rule.ServiceTestRule android.os.IBinder bindService(android.content.Intent)'>
+        <annotation name='android.support.annotation.Nullable' />
+    </item>
+</root>

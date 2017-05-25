@@ -1,10 +1,18 @@
 package edu.phystech.samir.mygallery;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.StaticLayout;
+import android.widget.ImageView;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+
 import static android.graphics.Bitmap.Config.ARGB_8888;
 import static org.junit.Assert.*;
 
@@ -20,16 +28,29 @@ public class JUnitTest {
     private static String str = "str";
     private static Bitmap bm;
 
+
     @BeforeClass
     public static void initForTest()throws NullPointerException {
         imageCache = new ImageCache();
         bm = Bitmap.createBitmap(100, 10, ARGB_8888);
+        imageCache.addBitmapToMemoryCache(str,bm);
     }
 
     @Test
-    public void TestImageAddAndGet(){
-        imageCache.addBitmapToMemoryCache(str,bm);
+    public void TestImageGetInstance(){
+        assertNotEquals(null,
+                imageCache.getInstance());
+    }
+
+    @Test
+    public void TestImageGet(){
         assertEquals(bm,
                 imageCache.getBitmapFromMemCache(str));
     }
+
+    @Test
+    public void TestImageGetClass() {
+         assertEquals(ImageCache.class,imageCache.getClass());
+    }
+
 }

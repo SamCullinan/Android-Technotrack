@@ -41,7 +41,6 @@ public class ImgLoadServ extends Service {
 
     boolean shouldRequestPermission;
 
-
     @Override
     public void onCreate() {
         ImageCache imageCache = new ImageCache();
@@ -167,7 +166,7 @@ public class ImgLoadServ extends Service {
             return true;
     }
 
-    private void saveImgOnExternal(Bitmap bitmap, String filename) {
+    public void saveImgOnExternal(Bitmap bitmap, String filename) {
             OutputStream output;
             File filepath = Environment.getExternalStorageDirectory();
             File dirname = new File(filepath.getAbsolutePath() + "/ImgCollections");
@@ -181,7 +180,7 @@ public class ImgLoadServ extends Service {
             } catch (Exception e) { e.printStackTrace(); }
     }
 
-    private void saveImgOnInternal(Context context, Bitmap bitmap, String filename) {
+    public void saveImgOnInternal(Context context, Bitmap bitmap, String filename) {
         OutputStream output;
         File cacheDir = context.getCacheDir();
         File dirname = new File(cacheDir.getAbsolutePath() + "/ImgCollections");
@@ -189,10 +188,9 @@ public class ImgLoadServ extends Service {
         File file = new File(dirname, filename);
             try {
                 output = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 75, output);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
                 output.flush();
                 output.close();
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -223,7 +221,7 @@ public class ImgLoadServ extends Service {
                 try {
                     InputStream inputStream = new FileInputStream(file);
                     BitmapFactory.Options options = new BitmapFactory.Options();
-                    return BitmapFactory.decodeStream(inputStream, null, options);
+                    return BitmapFactory.decodeStream(inputStream,null, options);
                 } catch (FileNotFoundException e) { e.printStackTrace(); }
              }
         return null;
@@ -232,5 +230,4 @@ public class ImgLoadServ extends Service {
     private Bitmap LoadFromImgCache(String filename) {
         return LruCache.getBitmapFromMemCache(filename);
     }
-
 }
